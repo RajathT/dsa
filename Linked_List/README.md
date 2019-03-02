@@ -1,4 +1,5 @@
-#Linked List
+##Linked List
+
 Arrays vs Linked List
 Arrays - 
 Advantages - Lookup O(1). This is possible by calculating the size of the object first, then multiplying the index and adding it to the base address of the array. This lookup is done in constant time.
