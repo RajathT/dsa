@@ -1,3 +1,9 @@
+'''
+average log n partitioning operations and each partitioning takes O(n) operations.
+
+log n could go to n if pivot is always the smallest element
+best case pivot is roughly the median
+'''
 def quick(left,right,l):
     part = sort(left,right,l)
     if left < part-1:
