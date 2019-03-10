@@ -19,22 +19,22 @@ Example 1:
 Input: nums = [4,5,6,7,0,1,2], target = 0
 Output: 4
         """
-        left = 0
-        right = len(nums)-1
-        while(left<=right):
-            mid = (left + right)//2
-            if nums[mid]==target:
-                return mid
-            elif nums[mid]<nums[right]:
-                if nums[mid]<target and nums[right]>=target:
-                    left = mid+1
-                else: 
-                    right = mid-1
-            else: 
-                if nums[left]<=target and nums[mid]>target:
-                    right = mid - 1 
-                else: 
-                    left = mid + 1
+        i, j = 0, len(nums)-1
+        
+        while i<=j:
+            m = (i+j)//2
+            if nums[m] == target:
+                return m
+            elif nums[i] <= nums[m]:
+                if nums[i] <= target and target < nums[m]:
+                    j = m - 1
+                else:
+                    i = m + 1
+            else:
+                if nums[m] < target and target <= nums[j]:
+                    i = m + 1
+                else:
+                    j = m - 1
         return -1
             
         
