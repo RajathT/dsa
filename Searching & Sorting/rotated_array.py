@@ -23,9 +23,15 @@ Output: 4
         
         while i<=j:
             m = (i+j)//2
+            
             if nums[m] == target:
                 return m
-            elif nums[i] <= nums[m]:
+            elif nums[i] == target:
+                return i
+            elif nums[j] == target:
+                return j
+            
+            elif nums[i] < nums[m]:
                 if nums[i] <= target and target < nums[m]:
                     j = m - 1
                 else:
@@ -35,6 +41,7 @@ Output: 4
                     i = m + 1
                 else:
                     j = m - 1
+                    
         return -1
             
         
