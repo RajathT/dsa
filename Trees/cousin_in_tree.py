@@ -41,5 +41,25 @@ class Solution(object):
         if ans1 == None and ans2[0] == None or (ans1[0] != ans2[0] and ans1[1] == ans2[1]):
             return True
         return False
+    
+        """
+        q = []
+        q.append([root, 0])
+        ans1 = [-1,-1]
+        ans2 = [-1,-1]
+        
+        while q:
+            temp, d = q.pop(0)
+            if (temp.left and temp.left.val == x) or (temp.right and temp.right.val == x):
+                ans1[0], ans1[1] = temp.val, d
+            if (temp.left and temp.left.val == y) or (temp.right and temp.right.val == y):
+                ans2[0], ans2[1] = temp.val, d
+            if temp.left:
+                q.append([temp.left, d+1])
+            if temp.right:
+                q.append([temp.right, d+1])
+        
+        return ans1[1] == ans2[1] and ans1[0] != ans2[0]   
+        """
         
             
