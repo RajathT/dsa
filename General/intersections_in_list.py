@@ -28,25 +28,18 @@ Output: [[1,2],[5,5],[8,10],[15,23],[24,24],[25,25]]
 Reminder: The inputs and the desired output are lists of Interval objects, and not arrays or lists.
 
         """
-        i = j = 0
-        ans = []
+        i, j = 0, 0
+        res = []
         while i<len(A) and j<len(B):
-            if B[j].start>A[i].end:
-                i += 1
-            elif A[i].start>B[j].end:
+            a, b = A[i], B[j]
+            if a.end < b.start: i += 1
+            elif b.end < a.start: j += 1
+            elif a.end >= b.end:
+                b.start = max(a.start, b.start)
+                res.append(b)
                 j += 1
-            elif B[j].start>=A[i].start:
-                if B[j].end<=A[i].end:
-                    ans.append(B[j])
-                    j += 1
-                else:
-                    ans.append(Interval(B[j].start,A[i].end))
-                    i += 1
             else:
-                if A[i].end<=B[j].end:
-                    ans.append(A[i])
-                    i += 1
-                else:
-                    ans.append(Interval(A[i].start,B[j].end))
-                    j += 1
-        return ans
+                a.start = max(a.start, b.start)
+                res.append(a)
+                i += 1
+        return res
