@@ -9,7 +9,7 @@ class Solution(object):
     Input: word1 = "horse", word2 = "ros"
     Output: 3
         """
-        matrix = [[0 for __ in range(len(word1)+1)] for _ in range(len(word2)+1)]
+        matrix = [[0]*(len(word1)+1) for _ in range(len(word2)+1)]
         for i in range(len(word1)+1):matrix[0][i] = i
         for i in range(len(word2)+1):matrix[i][0] = i
         
