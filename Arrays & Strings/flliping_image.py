@@ -18,9 +18,6 @@ class Solution(object):
         :type A: List[List[int]]
         :rtype: List[List[int]]
         """
-        new = []
-        for row in A:
-            new.append(list(map(lambda x: x^1, row[::-1])))
-        return new
+        return [list(map(lambda x: x^1, row[::-1])) for row in A]
                 
         
