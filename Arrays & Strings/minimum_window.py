@@ -12,29 +12,25 @@ Example:
 Input: S = "ADOBECODEBANC", T = "ABC"
 Output: "BANC"
         """
-        i, j = 0, 0
-        counter = len(set(t))
-        ans = ''
-        D = collections.Counter(t)
-        m = len(s)+1
-        while j < len(s):
-            
-            if s[j] in D:
-                D[s[j]] -= 1
-                if D[s[j]] == 0:
+        D = collections.Counter(T)
+        counter = len(set(T))
+        begin, end, m, ans = 0, 0, float('inf'), ''
+        
+        while end < len(S):
+            if S[end] in D:
+                D[S[end]]-=1
+                if not D[S[end]]:
                     counter -= 1
-            j += 1
-            
-            while counter == 0:
-                if j-i < m:
-                    m = j-i
-                    ans = s[i:j] 
-                if s[i] in D:
-                    D[s[i]] += 1
-                    if D[s[i]] > 0:
+            end += 1
+            while not counter:
+                if end - begin < m:
+                    m = end - begin
+                    ans = S[begin:end]
+                if S[begin] in D:
+                    D[S[begin]]+=1
+                    if D[S[begin]]>0:
                         counter += 1
-                i += 1
-            
+                begin += 1
         return ans
         
             
