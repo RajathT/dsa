@@ -9,19 +9,12 @@ class Solution(object):
     Input: word1 = "horse", word2 = "ros"
     Output: 3
         """
-        INFI = 999999
-        m = len(word1)
-        n = len(word2)
-        MED = [[INFI for j in range(n + 1)] for i in range(m + 1)]
-        for i in range(m + 1):
-            MED[i][0] = i #all deletion
-        for j in range(n + 1):
-            MED[0][j] = j #all insertion
-        for i in range(1, m + 1):
-            for j in range(1, n + 1):
-                if word1[i - 1] == word2[j - 1]:
-                    MED[i][j] = min(MED[i - 1][j - 1], 1 + MED[i - 1][j], 1 + MED[i][j - 1])
-                else:
-                    MED[i][j] = 1 + min(MED[i - 1][j], MED[i][j - 1], MED[i - 1][j - 1])
-        return MED[m][n]
+        matrix = [[0 for __ in range(len(word1)+1)] for _ in range(len(word2)+1)]
+        for i in range(len(word1)+1):matrix[0][i] = i
+        for i in range(len(word2)+1):matrix[i][0] = i
+        
+        for i in range(1,len(word2)+1):
+            for j in range(1,len(word1)+1):
+                matrix[i][j] = 1 + min(matrix[i][j-1],matrix[i-1][j-1],matrix[i-1][j]) if word2[i-1] != word1[j-1] else matrix[i-1][j-1]
+        return matrix[-1][-1]
         
