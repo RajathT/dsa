@@ -1,17 +1,17 @@
 class Solution {
     public String countAndSay(int n) {
-        String val = "1";
+        StringBuilder val = new StringBuilder("1");
         for (int i=1; i<n; i++){
-            char prev = val.charAt(0); int count = 1; String temp="";
+            char prev = val.charAt(0); int count = 1; StringBuilder temp = new StringBuilder();
             for (int j=1; j<val.length(); j++){
                 if (val.charAt(j) == prev) count++;
                 else{
-                    temp += count + "" + prev;
+                    temp.append(count).append(prev);
                     prev = val.charAt(j); count = 1;
                 }
             }
-            val = temp + "" + count + "" + prev;
+            val = temp.append(count).append(prev);
         }
-        return val;
+        return val.toString();
     }
 }
